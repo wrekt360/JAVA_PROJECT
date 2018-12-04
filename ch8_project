@@ -1,0 +1,75 @@
+package Chapter_8;
+
+ import java.util.Scanner;
+ import java.util.Random;
+
+ public class Ortiz_ch8Project_RockPaperScissors {
+
+ public static void main(String[] args) {
+
+ {
+ String myMove; // player selection
+ String machineMove = ""; // machine selection
+ int randomInt; // randomly generated machine moves
+ int winCount = 0;
+
+ Scanner input = new Scanner(System.in);
+
+ System.out.println("Welcome to Rowshambo, best 3 out of 5 wins!\n" + "Please select your weapon.\n"
+ + "Rock, Paper, or Scissors.");
+
+ // begin loop
+ for (int i = 1; i <= 5; i++) {
+ System.out.println();
+
+ // Generate random number from 1 to 3
+ randomInt = (int) ((Math.random() * 3) + 1);
+ System.out.println(randomInt);
+
+ // Convert randomly generated numbers to "Rock", "Paper", "Scissors" strings
+ if (randomInt == 1)
+ machineMove = "Rock";
+ else if (randomInt == 2)
+ machineMove = "Paper";
+ else if (randomInt == 3)
+ machineMove = "Scissors";
+
+ // ask player to enter move
+ System.out.println("Enter your selection: ");
+ myMove = input.next();
+
+ // show machine's randomly generated move
+ System.out.println("Machine chooses: " + machineMove);
+
+ // possible outcomes and win_lose status for each
+ if (myMove.equals(machineMove))
+ System.out.println("A tie? Not bad for...a human!");// tie
+ else if (myMove.equals("Rock"))
+ if (machineMove.equals("Scissors")) {
+ System.out.println("Rock breaks scissors. Beginner's luck!"); // win
+ winCount++;
+ } else if (machineMove.equals("Paper"))
+ System.out.println("Paper covers rock. Did you expect this to be easy?");// lose
+ else if (myMove.equals("Paper"))
+ if (machineMove.equals("Scissors"))
+ System.out.println("Scissors cut paper. Did you expect this to be easy?");// lose
+ else if (machineMove.equals("Rock")) {
+ System.out.println("Paper covers rock. Beginner's luck!");// win
+ winCount++;
+ } else if (myMove.equals("Scissors"))
+ if (machineMove.equals("Rock"))
+ System.out.println("Rock breaks scissors. Did you expect this to be easy?");// lose
+ else if (machineMove.equals("Paper")) {
+ System.out.println("Scissors cut paper. Beginner's luck!");// win
+ winCount++;
+ } else
+ System.out.println("Invalid user input.");// error
+ if (winCount >= 3)
+ break;
+
+ } // end loop
+
+ System.out.println(winCount);
+ }
+ }
+ }
